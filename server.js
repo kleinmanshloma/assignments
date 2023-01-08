@@ -1,7 +1,6 @@
 const path = require("path");
 const Hebcal = require("hebcal");
 var express = require("express");
-const { dirname } = require("path");
 
 var app = express();
 
@@ -11,21 +10,27 @@ console.log(__dirname + "./publick");
 const publickDIrectory = path.join(__dirname, "./publick");
 app.use(express.static(publickDIrectory));
 
-/* app.use(express.static("publick")); */
-const today = new Date();
-var year = new Hebcal();
-/* const revrse = `.split("").reverse().join("")`; */
-const hd1 = new Hebcal.HDate(today).toString("h");
-console.log(hd1);
+app.use(express.static("publick"));
 
-app.get("/index.ht", (req, res) => {
-  console.log(req.query);
-  res.send("");
+var year = new Hebcal();
+
+/* const revrse = `.split("").reverse().join("")`; */
+
+// still needs aprovement
+app.get("/todaysdateconvert", (req, res) => {
+  console.log(req.query.date);
+  const dateConvert = req.query.date;
+  const hd1 = new Hebcal.HDate(dateConvert).toString("h");
+  console.log(hd1);
+  res.send(`${hd1}`);
 });
 
-app.get("/query", (req, res) => {
-  console.log(req.query);
-  res.send(`${hd1}`);
+app.get("/todaysdate", (req, res) => {
+  const today = new Date();
+  const todayDate = new Hebcal.HDate(today).toString("h");
+  console.log(todayDate);
+  /*   console.log(req.query); */
+  res.send(`${todayDate}`);
 });
 
 app.listen(PORT, () => {
