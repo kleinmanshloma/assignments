@@ -29,8 +29,12 @@ app.get("/todaysdate", (req, res) => {
   const today = new Date();
   const todayDate = new Hebcal.HDate(today).toString("h");
   console.log(todayDate);
-  /*   console.log(req.query); */
-  res.send(`${todayDate}`);
+  res.send(
+    ` <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  /> <a class="btn btn-dark" href="index.html">back to home page</a><br/>${todayDate}`
+  );
 });
 
 app.listen(PORT, () => {
