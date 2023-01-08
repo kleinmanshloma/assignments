@@ -7,6 +7,18 @@ const todaysDate = `${new Date().toISOString().substring(0, 10)}`;
 
 document.getElementById("today's-date").textContent = todaysDate;
 
+/* let date = "";
+fetch("http://localhost:8080/todaysdate")
+  .then((response) => {
+    response.json();
+    console.log(response);
+  })
+  .then((data) => {
+    const todaysDateHebrew = `data`;
+    document.getElementById("today's-date-hebrew").textContent =
+      todaysDateHebrew;
+  }); */
+
 const todaysDateHebrew = `some converted date`;
 
 document.getElementById("today's-date-hebrew").textContent = todaysDateHebrew;
@@ -31,4 +43,4 @@ document.getElementById("today's-date-hebrew").textContent = todaysDateHebrew;
 
   xhr.send();
 }; */
-document.getElementById("btn-convert").addEventListener("click", loadText);
+/* document.getElementById("btn-convert").addEventListener("click", loadText); */
