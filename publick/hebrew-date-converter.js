@@ -19,9 +19,9 @@ fetch("http://localhost:8080/todaysdate")
       todaysDateHebrew;
   }); */
 
-const todaysDateHebrew = `some converted date`;
+/* const todaysDateHebrew = `some converted date`;
 
-document.getElementById("today's-date-hebrew").textContent = todaysDateHebrew;
+document.getElementById("today's-date-hebrew").textContent = todaysDateHebrew; */
 
 /**
  *
