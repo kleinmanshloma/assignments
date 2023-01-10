@@ -6,9 +6,9 @@ var app = express();
 
 const PORT = 8080;
 
-console.log(__dirname + "./public");
-/* const publickDIrectory = path.join(__dirname, "./public");
-app.use(express.static(publickDIrectory)); */
+console.log(__dirname + "../publick");
+const publickDIrectory = path.join(__dirname, "./publick");
+app.use(express.static(publickDIrectory));
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -18,7 +18,7 @@ app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
 const today = new Date();
-app.get("/", (req, res) => {
+app.get("/todaysdate", (req, res) => {
   const day = `${today
     .getDate()
     .toLocaleString("en-US", { minimumIntegerDigits: 2 })}/${(
@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
   const searchADay = new Hebcal.HDate(gregDate).toString("h");
 
   if (req.query.date) {
-    res.render("index.ejs", {
+    res.status(200).render("index.ejs", {
       hebrewDate: todayDate,
       todaysDate: day,
       searchDate: searchADay,
@@ -43,9 +43,10 @@ app.get("/", (req, res) => {
 
     return;
   } else {
-    res.render("index.ejs", {
+    res.status(200).render("index.ejs", {
       hebrewDate: todayDate,
       todaysDate: day,
+      searchDate: false,
     });
   }
 });
